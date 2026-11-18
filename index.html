@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> yooohoooo </title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body>
+  <main class="container">
+    <h1>Hi bebe! 💕</h1>
+    <p>ooppss oopppss ooopppsss</p>
+
+    <button
+      class="heart-button"
+      onclick="openSurprise()"
+      aria-label="Open your surprise"
+    >
+      <div class="heart">
+            <img src="baby.jpeg" alt="My Photo">
+
+        </div>
+    </button>
+
+    <p>nyaknyak same parin to iniba ko lng! 🎁</p>
+  </main>
+
+  <audio id="bgmusic" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playMusic() {
+            let audio = document.getElementById("bgmusic");
+            audio.play();
+        }
+    </script>
+
+  <section class="surprise" id="surprise">
+    <div class="photo-card">
+      
+      <div class="message">para sayo ang laban na to <br> (joke AHAHAHAHAHH)</div>
+      <div class="letter">Hiii bebe </div>
+      <div class="sub-message">
+        
+        <br>
+        I just want to say that I love you so much.
+        <br>
+         You are my <mark>EVERYTHING</mark> and I am so grate grate grateful to have you in my <mark>LIFEEE!!</mark>. You make me the happiest person in the world and I can't wait to spend the rest of my life with you. 
+         <br>
+         <br>
+         and I promise to always be there for you, through the good times and the bad. na kahit bigla kita di pinapansin or nag tatampuhan nag babati parin tayo, ay dapat lang talaga mag bati tayo pag hindi iiyak nalang talaga ako (overch ang babae), kahit na ganon <mark>MY HEARTTT STILL CHOOSESS YOUUU bebe 🥰💗</mark>.
+          <br>
+          <br>
+          ayun lang wala na akong masabi, kainis ka di naman ako ganito 😭😭😭.
+      </div>
+    </div>
+
+    <button class="close-button" onclick="closeSurprise()">
+      Close 💌
+      
+    </button>
+  </section>
+
+  <script>
+    const audio = document.getElementById("bgmusic");
+
+    function openSurprise() {
+        // Show surprise
+        document.getElementById("surprise").classList.add("show");
+
+        // Play music when photo is clicked
+        audio.play().then(() => {
+            console.log("Music is playing!");
+        }).catch(error => {
+            console.log("Music error:", error);
+            alert("Music cannot play. Please check your song.mp3 file.");
+        });
+
+        createHearts();
+    }
+
+    function closeSurprise() {
+        document.getElementById("surprise").classList.remove("show");
+    }
+
+    function createHearts() {
+        for (let i = 0; i < 25; i++) {
+            const heart = document.createElement("div");
+            heart.className = "floating-heart";
+
+            heart.textContent = ["🥰", "💕", "💖", "☺️", "❤️"][
+                Math.floor(Math.random() * 5)
+            ];
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDelay = Math.random() * 2 + "s";
+            heart.style.fontSize = 15 + Math.random() * 25 + "px";
+
+            document.body.appendChild(heart);
+
+            heart.addEventListener("animationend", () => heart.remove());
+        }
+    }
+</script>
+</body>
+</html>
